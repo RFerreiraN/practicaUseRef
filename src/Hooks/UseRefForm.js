@@ -1,13 +1,8 @@
 import {useState} from 'react'
 
-export const UseRefForm = () => {
+export const UseRefForm = (initialForm) => {
   
-  const [inputValue, setInputValue] = useState({
-      email: '',
-      password: ''
-    })
-  
-    const { email, password } = inputValue;
+  const [inputValue, setInputValue] = useState(initialForm)
   
     const handleInput = ({ target }) => {
       const { name, value } = target
@@ -18,10 +13,7 @@ export const UseRefForm = () => {
     }
   
     const resetForm = () => {
-      setInputValue({
-        email: '',
-        password: ''
-      })
+      setInputValue(initialForm)
     }
   
     const onSubmitInput = (event) => {
@@ -37,3 +29,6 @@ export const UseRefForm = () => {
     onSubmitInput
   }
 }
+
+
+//Este Custom hook se puede usar en otros formularios solo se deben cambiar los nombres de los inputs en dicho formulario

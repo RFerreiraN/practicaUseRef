@@ -3,9 +3,14 @@ import { UseRefForm } from '../Hooks/UseRefForm';
 
 export const UseRefComponent = () => {
 
+  const initialForm = {
+      email: '',
+      password: ''
+    }
+
   const formRef = useRef()
 
-  const {inputValue, handleInput, resetForm,  onSubmitInput} = UseRefForm()
+  const {inputValue, handleInput, resetForm,  onSubmitInput} = UseRefForm(initialForm)
 
   const { email, password } = inputValue;
 
@@ -16,10 +21,11 @@ export const UseRefComponent = () => {
   return (
     <form onSubmit={onSubmitInput}>
       <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+        <label htmlFor="email" className="form-label">Email address</label>
         <input
           ref={formRef}
           type="email"
+          id='email'
           className="form-control"
           name="email"
           value={email}
@@ -28,9 +34,10 @@ export const UseRefComponent = () => {
       </div>
 
       <div className="mb-3">
-        <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+        <label htmlFor="password" className="form-label">Password</label>
         <input
           type="password"
+          id='password'
           className="form-control"
           name="password"
           value={password}
